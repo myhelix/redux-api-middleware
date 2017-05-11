@@ -1,3 +1,4 @@
+import 'isomorphic-fetch'
 import CALL_API from './CALL_API';
 import { isRSAA, validateRSAA } from './validation';
 import { InvalidRSAA, RequestError, ApiError } from './errors' ;
