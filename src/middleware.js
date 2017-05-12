@@ -96,9 +96,14 @@ function apiMiddleware({ getState }) {
       [action, getState()]
     ));
 
+    let stringifiedBody
+    if (typeof body === 'object') {
+      stringifiedBody = JSON.stringify(body)
+    }
+
     try {
       // Make the API call
-      var res = await fetch(endpoint, { method, body, credentials, headers: headers || {} });
+      var res = await fetch(endpoint, { method, body: stringifiedBody || body, credentials, headers: headers || {} });
     } catch(e) {
       // The request was malformed, or there was a network error
       return next(await actionWith(
